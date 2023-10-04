@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+
 import './App.css';
+import "./fuentes/BarlowSemiCondensed-Black_Manzana.ttf"
+import { Routes, Route, HashRouter, BrowserRouter } from "react-router-dom";
+import Admin from './Admin';
+import Preguntas from './Preguntas';
+import Proyeccion from './Proyeccion';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+    <Routes>
+      <Route path="/" element={<Preguntas/>} />
+      <Route path="/admin" element={<Admin/>} />
+      <Route path="/proyeccion" element={<Proyeccion/>} />
+    </Routes>
+    </HashRouter>
+    
   );
 }
 

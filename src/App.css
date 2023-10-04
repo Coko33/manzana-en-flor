@@ -1,38 +1,201 @@
-.App {
+@font-face {
+  font-family: "Black";   /*Can be any text*/
+  src: local("BarlowSemiCondensed-Black_Manzana"),
+    url("./fuentes/BarlowSemiCondensed-Black_Manzana.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Regular";   /*Can be any text*/
+  src: local("BarlowSemiCondensed-Regular_Manzana"),
+    url("./fuentes/BarlowSemiCondensed-Regular_Manzana.ttf") format("truetype");
+}
+* {
+  font-family: "Regular";
+}
+/*Preguntas*/
+.encabezado {
+  position: relative;
+  left: 20px;
+}
+.encabezado h1 {
+  font-family: "Black";
+  margin-bottom: 0;
+}
+.encabezado h3 {
+  font-family: "Black";
+  margin-top: 0;
+}
+label {
+  display: block;
+  position: relative;
+  left: 20px;
+  padding: 10px 0px 5px 0px;
+}
+#muyLargo {
+  position: absolute;
+  left: 20px;
+}
+#muyLargo p {
+  display: none;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color: rgb(216, 98, 85);
+}
+.mostrar p{
+  display: block !important;
+}
+#formulario {
+  position:relative;
+  display: block;
+  top: 20px;
+}
+.preguntas_contPregunta{
+  position:relative;
+  background-color: rgb(176, 244, 215);
+  border-radius: 10px;
+  width: calc(100vw - 40px);
+  left: 20px;
+  padding: 20px 0px 40px 0px;
+}
+.preguntas_inputNombre, .preguntas_inputPregunta {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  width: calc(100% - 40px);
+  left: 20px;
+  border: none;
+  border-radius: 5px;
+  padding-left: 5px;
+}
+.preguntas_inputNombre {
+  height: 30px;
+}
+.preguntas_inputPregunta {
+  resize: none;
+}
+.preguntas_contBoton {
+  position: relative;
+  top: 10px;
+  display: flex;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  height: 40px;
+  justify-content: end;
+  margin-right: 20px;
+}
+.preguntas_boton {
+  background-color: rgb(28, 180, 115);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.preguntas_contImg {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  top: 20px;
+}
+.manzanaImg{
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+.manzanaImg img {
+  position: absolute;
+  width: 100%;
+}
+/*Proyeccion*/
+.proy_contenedor {
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(28, 180, 115);
+}
+.fade-text {
+  font-size: clamp(1.5rem, 8vw - 2rem, 7rem);
+  text-transform: uppercase;
   text-align: center;
+  color: rgb(255, 255, 255);
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.fade-container {
+  opacity: 1; /* Inicialmente visible */
+  transition: opacity 3s ease-in-out; /* Transición de 3 segundos */
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.fade-container.fade-in {
+  animation: blur-in-expand 1.4s linear both
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.fade-container.fade-out {
+  animation: blur-out-expand 1.4s linear both
+}
+/*admin*/
+.admin_contDosTablas {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: baseline;
 }
-
-.App-link {
-  color: #61dafb;
+.admin_contTabla {
+  position: relative;
+  left: 10px;
+  width: calc(100% - 20px)
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.admin_tituloTabla {
+  margin: 0;
+}
+table { table-layout: fixed; width: 100%; border-collapse: collapse;}
+td {padding: 0 5px; border: solid 1px #d8d8d8;
+  border-left: 0;
+  border-right: 0;}
+.thNombre {
+  width: 70px;
+  text-align: left;
+}
+.thBoton {
+  width: 70px;
+}
+@keyframes blur-in-expand {
+  0% {
+    transform:scale(0);
+    filter:blur(12px);
+    opacity:0
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    transform:scale(1); 
+    filter:blur(0);
+    opacity:1
+  }
+} 
+@keyframes blur-out-expand {
+  0% {
+    transform:scale(1);
+    filter:blur(.01px);
+  } 
+  100% {
+    transform:scale(2); 
+    filter:blur(12px);
+    opacity:0
+  }
+}
+
+@media (min-width:600px) {
+  /*preguntas*/
+  .preguntas_contPregunta {
+    width: calc(50vw);
+    left: 25vw;
+  }
+  /*admin*/
+  .admin_contDosTablas {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  table {
+    width: 90%;
+    left: 5%;
   }
 }
