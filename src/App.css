@@ -1,10 +1,10 @@
 @font-face {
-  font-family: "Black";   /*Can be any text*/
+  font-family: "Black"; /*Can be any text*/
   src: local("BarlowSemiCondensed-Black_Manzana"),
     url("./fuentes/BarlowSemiCondensed-Black_Manzana.ttf") format("truetype");
 }
 @font-face {
-  font-family: "Regular";   /*Can be any text*/
+  font-family: "Regular"; /*Can be any text*/
   src: local("BarlowSemiCondensed-Regular_Manzana"),
     url("./fuentes/BarlowSemiCondensed-Regular_Manzana.ttf") format("truetype");
 }
@@ -14,10 +14,11 @@
 /*Preguntas*/
 .encabezado {
   position: relative;
+  width: calc(100vw - 20px);
   left: 20px;
 }
-.encabezado h1 {
-  font-family: "Black";
+.fade-text {
+  font-family: "Black" !important;
   margin-bottom: 0;
 }
 .encabezado h3 {
@@ -41,23 +42,24 @@ label {
   font-size: 16px;
   color: rgb(216, 98, 85);
 }
-.mostrar p{
+.mostrar p {
   display: block !important;
 }
 #formulario {
-  position:relative;
+  position: relative;
   display: block;
   top: 20px;
 }
-.preguntas_contPregunta{
-  position:relative;
+.preguntas_contPregunta {
+  position: relative;
   background-color: rgb(176, 244, 215);
   border-radius: 10px;
   width: calc(100vw - 40px);
   left: 20px;
   padding: 20px 0px 40px 0px;
 }
-.preguntas_inputNombre, .preguntas_inputPregunta {
+.preguntas_inputNombre,
+.preguntas_inputPregunta {
   display: block;
   position: relative;
   box-sizing: border-box;
@@ -100,14 +102,45 @@ label {
   padding: 0;
   top: 20px;
 }
-.manzanaImg{
+.preguntas_contImg.proy {
+  position: absolute;
+  bottom: 0;
+}
+.manzanaImg {
   position: relative;
   width: 200px;
   height: 200px;
 }
+.manzanaImg.proy {
+  top: calc(50vh - 200px);
+  width: 400px;
+  height: 400px;
+}
 .manzanaImg img {
   position: absolute;
   width: 100%;
+}
+
+.env_container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  z-index: 100;
+}
+.env_contText {
+  background-color: honeydew;
+  border-radius: 10px;
+  border: solid 1px;
+  width: 250px;
+  height: 80px;
+  display: grid;
+  place-items: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+.env_text {
 }
 /*Proyeccion*/
 .proy_contenedor {
@@ -116,22 +149,25 @@ label {
   width: 100vw;
   height: 100vh;
   background-color: rgb(28, 180, 115);
+  overflow: hidden;
 }
 .fade-text {
   font-size: clamp(1.5rem, 8vw - 2rem, 7rem);
   text-transform: uppercase;
   text-align: center;
   color: rgb(255, 255, 255);
+  line-height: clamp(1.5rem, 8vw - 2rem, 7rem);
 }
 .fade-container {
   opacity: 1; /* Inicialmente visible */
+  max-width: 90%;
   transition: opacity 3s ease-in-out; /* Transición de 3 segundos */
 }
 .fade-container.fade-in {
-  animation: blur-in-expand 1.4s linear both
+  animation: blur-in-expand 1.4s linear both;
 }
 .fade-container.fade-out {
-  animation: blur-out-expand 1.4s linear both
+  animation: blur-out-expand 1.4s linear both;
 }
 /*admin*/
 .admin_contDosTablas {
@@ -143,15 +179,22 @@ label {
 .admin_contTabla {
   position: relative;
   left: 10px;
-  width: calc(100% - 20px)
+  width: calc(100% - 20px);
 }
 .admin_tituloTabla {
   margin: 0;
 }
-table { table-layout: fixed; width: 100%; border-collapse: collapse;}
-td {padding: 0 5px; border: solid 1px #d8d8d8;
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+td {
+  padding: 0 5px;
+  border: solid 1px #d8d8d8;
   border-left: 0;
-  border-right: 0;}
+  border-right: 0;
+}
 .thNombre {
   width: 70px;
   text-align: left;
@@ -161,29 +204,29 @@ td {padding: 0 5px; border: solid 1px #d8d8d8;
 }
 @keyframes blur-in-expand {
   0% {
-    transform:scale(0);
-    filter:blur(12px);
-    opacity:0
+    transform: scale(0);
+    filter: blur(12px);
+    opacity: 0;
   }
   100% {
-    transform:scale(1); 
-    filter:blur(0);
-    opacity:1
+    transform: scale(1);
+    filter: blur(0);
+    opacity: 1;
   }
-} 
+}
 @keyframes blur-out-expand {
   0% {
-    transform:scale(1);
-    filter:blur(.01px);
-  } 
+    transform: scale(1);
+    filter: blur(0.01px);
+  }
   100% {
-    transform:scale(2); 
-    filter:blur(12px);
-    opacity:0
+    transform: scale(2);
+    filter: blur(12px);
+    opacity: 0;
   }
 }
 
-@media (min-width:600px) {
+@media (min-width: 600px) {
   /*preguntas*/
   .preguntas_contPregunta {
     width: calc(50vw);
@@ -197,5 +240,22 @@ td {padding: 0 5px; border: solid 1px #d8d8d8;
   table {
     width: 90%;
     left: 5%;
+  }
+}
+
+/*Pruebas*/
+.ball {
+  border-radius: 50%;
+  animation: rebota 0.75s alternate infinite ease-in;
+}
+
+@keyframes rebota {
+  90% {
+    height: 100px;
+  }
+
+  100% {
+    transform: translateY(200px);
+    height: 80px;
   }
 }
