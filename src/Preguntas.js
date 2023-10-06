@@ -46,7 +46,7 @@ export default function Preguntas() {
   return (
     <>
       {isOpenConfirm && <ModalEnviada />}
-      <div className="encabezado">
+      <div className="preguntas_encabezado">
         <h1>MANZANA EN FLOR</h1>
         <h3>Escribí tu pregunta</h3>
       </div>
@@ -66,7 +66,7 @@ export default function Preguntas() {
           ></input>
           <label htmlFor="pregunta">Pregunta:</label>
           <textarea
-            maxLength="121"
+            maxLength="3121"
             placeholder="tu pregunta"
             rows="4"
             className="preguntas_inputPregunta"
@@ -84,9 +84,8 @@ export default function Preguntas() {
           </div>
         </form>
       </div>
-      <div className="preguntas_contImg">
-        {/* ball */}
-        <div className="manzanaImg">
+      <div className="preguntas_contImg preg">
+        <div className="manzanaImg ">
           <img src={manzana1}></img>
           <img src={manzana2}></img>
           <img src={manzana3}></img>

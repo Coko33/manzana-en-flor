@@ -8,11 +8,16 @@
   src: local("BarlowSemiCondensed-Regular_Manzana"),
     url("./fuentes/BarlowSemiCondensed-Regular_Manzana.ttf") format("truetype");
 }
+@font-face {
+  font-family: "Bold"; /*Can be any text*/
+  src: local("BarlowSemiCondensed-Bold_Manzana"),
+    url("./fuentes/BarlowSemiCondensed-Bold_Manzana.ttf") format("truetype");
+}
 * {
   font-family: "Regular";
 }
 /*Preguntas*/
-.encabezado {
+.preguntas_encabezado {
   position: relative;
   width: calc(100vw - 20px);
   left: 20px;
@@ -21,7 +26,7 @@
   font-family: "Black" !important;
   margin-bottom: 0;
 }
-.encabezado h3 {
+.preguntas_encabezado h3 {
   font-family: "Black";
   margin-top: 0;
 }
@@ -94,13 +99,14 @@ label {
   font-weight: 700;
 }
 .preguntas_contImg {
-  position: relative;
+  position: absolute;
   display: flex;
   justify-content: center;
   width: 100vw;
   margin: 0;
   padding: 0;
-  top: 20px;
+  top: 0;
+  left: 0;
 }
 .preguntas_contImg.proy {
   position: absolute;
@@ -112,13 +118,44 @@ label {
   height: 200px;
 }
 .manzanaImg.proy {
-  top: calc(50vh - 200px);
-  width: 400px;
-  height: 400px;
+  top: calc(50vh - 400px);
+  width: 900px;
+  height: 900px;
+}
+.preguntas_contImg.preg {
+  top: 70vh;
 }
 .manzanaImg img {
   position: absolute;
   width: 100%;
+}
+.titulos_cont {
+  width: 1300px;
+  padding-top: 100px;
+  padding-left: 100px;
+}
+#titulosSvg {
+  position: relative;
+  z-index: 1000;
+  filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+}
+.st0 {
+  fill: #ffffff;
+}
+.st1 {
+  font-family: "Bold";
+}
+.st2 {
+  font-size: 33.4923px;
+}
+.st3 {
+  font-family: "Black";
+}
+.st4 {
+  font-size: 66.3997px;
+}
+.st5 {
+  fill: #ef5ba0;
 }
 
 .env_container {
@@ -144,6 +181,7 @@ label {
 }
 /*Proyeccion*/
 .proy_contenedor {
+  position: relative;
   display: grid;
   place-items: center;
   width: 100vw;
@@ -170,18 +208,52 @@ label {
   animation: blur-out-expand 1.4s linear both;
 }
 /*admin*/
+.admin_encabezado {
+  position: relative;
+  width: calc(100vw - 40px);
+  left: 20px;
+}
+.admin_h1 {
+  margin: 0;
+  margin-top: 20px;
+}
+.admin_h3 {
+  margin: 0;
+  margin-bottom: 10px;
+}
+.admin_contBotones {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+  height: 35px;
+  gap: 5px;
+}
+.admin_botones {
+  height: 35px;
+  line-height: 10px;
+  margin: 0;
+}
+.admin_tituloTabla {
+  background-color: rgb(218, 218, 218);
+}
 .admin_contDosTablas {
   position: relative;
+  top: 10px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: baseline;
 }
 .admin_contTabla {
   position: relative;
-  left: 10px;
-  width: calc(100% - 20px);
+  margin-top: 15px;
+  left: 20px;
+  width: calc(100% - 40px);
 }
 .admin_tituloTabla {
+  width: 100%;
   margin: 0;
 }
 table {
@@ -233,9 +305,24 @@ td {
     left: 25vw;
   }
   /*admin*/
+  .admin_contBotones {
+    justify-content: start;
+  }
   .admin_contDosTablas {
+    position: relative;
+    width: calc(100% - 40px);
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+  .admin_tituloTabla {
+    width: calc(100% - 40px);
+    margin: 0;
+  }
+  .admin_contTabla {
+    position: relative;
+    left: 20px;
+    width: calc(100% - 40px);
   }
   table {
     width: 90%;
@@ -246,7 +333,7 @@ td {
 /*Pruebas*/
 .ball {
   border-radius: 50%;
-  animation: rebota 0.75s alternate infinite ease-in;
+  animation: rebota 4s alternate infinite ease-in;
 }
 
 @keyframes rebota {

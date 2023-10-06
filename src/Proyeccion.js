@@ -2,15 +2,13 @@ import "./App.css";
 import { db } from "./utils/firebase.js";
 import { onValue, ref } from "firebase/database";
 import { useEffect, useState } from "react";
-import manzana1 from "./imagenesFlores/MFA1-01.png";
-import manzana2 from "./imagenesFlores/MFA2-01.png";
-import manzana3 from "./imagenesFlores/MFA3-01.png";
-import manzana4 from "./imagenesFlores/MFA4-01.png";
-import manzana5 from "./imagenesFlores/MFA5-01.png";
+import Qr from "./otrosComponentes/Qr";
+import Titulos from "./otrosComponentes/Titulos";
 
 export default function Proyeccion() {
   const [elegida, setElegida] = useState(null);
   const [texto, setTexto] = useState("");
+  const [enProyeccion, setEnProyeccion] = useState("");
 
   let intervalId;
 
@@ -47,6 +45,7 @@ export default function Proyeccion() {
   };
 
   useEffect(() => {
+    console.log("1er Effect");
     /* const container = document.querySelector(".fade-container"); */
     const elegidaRef = ref(db, "elegida");
     const unsubscribe = onValue(elegidaRef, (snapshot) => {
@@ -66,7 +65,7 @@ export default function Proyeccion() {
 
   useEffect(() => {
     if (elegida) {
-      console.log(elegida);
+      console.log("2do Effect");
       const intervalId = wordflick();
       return () => {
         clearInterval(intervalId);
@@ -74,24 +73,30 @@ export default function Proyeccion() {
     }
   }, [elegida]);
 
-  // ...
+  useEffect(() => {
+    console.log("3do Effect");
+    const enProyeccionRef = ref(db, "enProyeccion");
+    const unsubscribe = onValue(enProyeccionRef, (snapshot) => {
+      const data = snapshot.val();
+      console.log(data);
+      setEnProyeccion(data);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   return (
     <>
       <div className="proy_contenedor">
-        <div className="fade-container">
-          {elegida && <h1 className="fade-text">{texto}</h1>}
-        </div>
+        {enProyeccion === "preguntas" && (
+          <div className="fade-container">
+            {elegida && <h1 className="fade-text">{texto}</h1>}
+          </div>
+        )}
+        {enProyeccion === "QR" && <Qr />}
+        {enProyeccion === "titulos" && <Titulos />}
       </div>
-      {/*  <div className="preguntas_contImg proy">
-        <div className="manzanaImg ball proy">
-          <img src={manzana1}></img>
-          <img src={manzana2}></img>
-          <img src={manzana3}></img>
-          <img src={manzana4}></img>
-          <img src={manzana5}></img>
-        </div>
-      </div> */}
     </>
   );
 }

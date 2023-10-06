@@ -1,0 +1,8 @@
+.qr_cont {
+  width: 30%;
+  background-color: rgb(186, 255, 186);
+}
+.qr_cont h1 {
+  text-align: center;
+  font-size: 25px;
+}
